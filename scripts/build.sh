@@ -40,11 +40,11 @@ GO_MOD_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 MODULE_NAME=$(grep '^module ' "$GO_MOD_ROOT/go.mod" | awk '{print $2}')
 
 # 获取 app.Version 的完整路径
-REL_APP_PKG=$(realpath --relative-to="$GO_MOD_ROOT" "$APP_DIR")
-LD_PACKAGE="$MODULE_NAME/${REL_APP_PKG}/app"
+LD_PACKAGE="$MODULE_NAME/apps/$APP_NAME"
 
 # 5. 构建
 echo "Building $APP_NAME version $VERSION..."
+echo "go build -ldflags \"-X ${LD_PACKAGE}.Version=${VERSION}\" -o \"$SCRIPT_DIR/../bin/$APP_NAME\" \"$APP_DIR\""
 go build -ldflags "-X ${LD_PACKAGE}.Version=${VERSION}" -o "$SCRIPT_DIR/../bin/$APP_NAME" "$APP_DIR"
 
 echo "✅ Build complete: $APP_NAME ($VERSION)"
