@@ -1,0 +1,7 @@
+logger:
+  file: logs/my-app.log
+  level: info
+  maxsize: 100
+  maxBackups: 3
+  maxAge: 7
+  compress: false
