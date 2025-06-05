@@ -17,7 +17,7 @@ if (-not $Version) {
         $Patch = [int]$Parts[2] + 1
         $Version = "v$Major.$Minor.$Patch"
     } else {
-        $Version = "v0.0.1"
+        $Version = "v0.1.0"
     }
 }
 
