@@ -44,7 +44,7 @@ LD_PACKAGE="$MODULE_NAME/apps/$APP_NAME"
 
 # 5. 构建
 echo "Building $APP_NAME version $VERSION..."
-echo "go build -ldflags \"-X ${LD_PACKAGE}.Version=${VERSION}\" -o \"$SCRIPT_DIR/../bin/$APP_NAME\" \"$APP_DIR\""
+echo "go build -ldflags \"-X ${LD_PACKAGE}.version=${VERSION}\" -o \"$SCRIPT_DIR/../bin/$APP_NAME\" \"$APP_DIR\""
 go build -ldflags "-X ${LD_PACKAGE}.Version=${VERSION}" -o "$SCRIPT_DIR/../bin/$APP_NAME" "$APP_DIR"
 
 echo "✅ Build complete: $APP_NAME ($VERSION)"
