@@ -1,5 +1,5 @@
 package config
 
-type MyService struct {
+type MyApp struct {
 	Common `mapstructure:",squash"`
 }

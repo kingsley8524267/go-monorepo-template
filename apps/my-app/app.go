@@ -15,7 +15,7 @@ type App struct {
 	info   config.App
 	ctx    context.Context
 	cancel context.CancelFunc
-	cfg    *config.MyService
+	cfg    *config.MyApp
 }
 
 func New() (*App, error) {
@@ -25,7 +25,7 @@ func New() (*App, error) {
 	}
 
 	var err error
-	cfg := new(config.MyService)
+	cfg := new(config.MyApp)
 	if err = config.LoadConfig(info, cfg); err != nil {
 		return nil, err
 	}
