@@ -1,4 +1,4 @@
-package my_service
+package my_app
 
 import (
 	"flag"

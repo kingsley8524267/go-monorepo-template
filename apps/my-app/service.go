@@ -1,4 +1,4 @@
-package my_service
+package my_app
 
 import (
 	"go-monorepo-template/internal/config"
@@ -7,19 +7,19 @@ import (
 	"golang.org/x/net/context"
 )
 
-const name = "my-service"
+const name = "my-app"
 
 var version = "DEV"
 
-type Service struct {
-	info   config.Service
+type App struct {
+	info   config.App
 	ctx    context.Context
 	cancel context.CancelFunc
 	cfg    *config.MyService
 }
 
-func New() (*Service, error) {
-	info := config.Service{
+func New() (*App, error) {
+	info := config.App{
 		Name:    name,
 		Version: version,
 	}
@@ -37,7 +37,7 @@ func New() (*Service, error) {
 	ctx, cancel := context.WithCancel(context.Background())
 
 	signal.AddCloseFunc("logger", func() error { return logger.Sync() })
-	return &Service{
+	return &App{
 		info:   info,
 		ctx:    ctx,
 		cancel: cancel,
@@ -45,7 +45,7 @@ func New() (*Service, error) {
 	}, nil
 }
 
-func (s *Service) Run() {
+func (s *App) Run() {
 	logger.Infof("%s started", s.info.String())
 
 	/*
@@ -55,11 +55,11 @@ func (s *Service) Run() {
 	signal.WaitClose(s.info)
 }
 
-func (s *Service) Close() error {
+func (s *App) Close() error {
 	s.cancel()
 	return nil
 }
 
-func (s *Service) String() string {
+func (s *App) String() string {
 	return s.info.String()
 }
