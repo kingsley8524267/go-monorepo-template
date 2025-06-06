@@ -19,7 +19,7 @@ func AddCloseFunc(name string, f func() error) {
 	cfs = append(cfs, closeFunc{name: name, close: f})
 }
 
-func WaitClose(service config.Service) {
+func WaitClose(service config.App) {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
